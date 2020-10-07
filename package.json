@@ -6,14 +6,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/prismamedia/ts-async-event-emitter"
+    "url": "https://github.com/prismamedia/ts-typed-event-emitter"
   },
   "main": "dist/cjs/index.js",
   "typings": "dist/types/index.d.ts",
   "scripts": {
-    "build": "tsc --build tsconfig.json",
-    "build:clean": "tsc --build tsconfig.json --clean",
-    "build:watch": "tsc --build tsconfig.json --watch",
+    "build": "tsc --build",
+    "build:clean": "tsc --build --clean",
+    "build:watch": "tsc --build --watch",
     "test": "NODE_ENV=test jest --detectOpenHandles --verbose --passWithNoTests",
     "test:watch": "yarn run test --watchAll",
     "clean": "git clean -dfqx -- .",
