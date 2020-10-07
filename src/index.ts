@@ -26,12 +26,12 @@ export type TEventListener<
   TName extends TEventName<TMap> = TEventName<TMap>
 > = (...args: TEventArgs<TMap, TName>) => void;
 
-export type TEventEmitterOptions<TMap extends TEventMap> = Partial<
+export type TTypedEventEmitterOptions<TMap extends TEventMap> = Partial<
   { [TName in TEventName<TMap>]: TEventListener<TMap, TName> }
 >;
 
 export class TypedEventEmitter<TMap extends TEventMap> extends EventEmitter {
-  public constructor(options?: TEventEmitterOptions<TMap>) {
+  public constructor(options?: TTypedEventEmitterOptions<TMap>) {
     super({ captureRejections: true });
 
     if (options) {
