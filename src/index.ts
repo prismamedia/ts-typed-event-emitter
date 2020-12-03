@@ -27,7 +27,11 @@ export type TEventListener<
 > = (...args: TEventArgs<TMap, TName>) => void;
 
 export type TTypedEventEmitterOptions<TMap extends TEventMap> = Partial<
-  { [TName in TEventName<TMap>]: TEventListener<TMap, TName> }
+  {
+    [TName in TEventName<TMap>]:
+      | TEventListener<TMap, TName>
+      | ReadonlyArray<TEventListener<TMap, TName>>;
+  }
 >;
 
 export class TypedEventEmitter<TMap extends TEventMap> extends EventEmitter {
@@ -35,9 +39,15 @@ export class TypedEventEmitter<TMap extends TEventMap> extends EventEmitter {
     super({ captureRejections: true });
 
     if (options) {
-      for (const [name, listener] of Object.entries(options)) {
-        if (listener) {
-          this.on<any>(name, listener);
+      for (const [name, listenerOrListeners] of Object.entries(options)) {
+        const listeners = Array.isArray(listenerOrListeners)
+          ? listenerOrListeners
+          : [listenerOrListeners];
+
+        for (const listener of listeners) {
+          if (listener) {
+            this.on<any>(name, listener);
+          }
         }
       }
     }

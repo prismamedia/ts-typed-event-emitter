@@ -4,6 +4,11 @@
     "source.organizeImports": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace",
+  "editor.letterSpacing": 1.2,
+  "editor.fontSize": 13,
+  "editor.fontLigatures": true,
+  "editor.smoothScrolling": true,
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
   "typescript.enablePromptUseWorkspaceTsdk": true,
